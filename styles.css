@@ -218,9 +218,19 @@ a:hover {
   color: var(--color-light);
 }
 
+.title-big {
+  font-size: clamp(24px, 3.12vw, 60px);
+  line-height: 1.2;
+}
+
 .backdrop-title {
   position: relative;
   z-index: 2;
+}
+
+.backdrop-title.centered::after {
+  left: 50%;
+  translate: -50% 0;
 }
 
 .backdrop-title::before {
@@ -272,6 +282,7 @@ a:hover {
   height: var(--input-height);
   padding-left: 30px;
   padding-right: 80px;
+  color: var(--color-light);
   background-color: transparent;
   border: var(--border);
 }
@@ -290,6 +301,30 @@ a:hover {
 .button.transparent:hover {
   color: var(--color-dark);
   background-color: var(--color-light-grey);
+}
+
+.input {
+  height: var(--input-height);
+  padding-inline: 25px;
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid var(--color-light-grey);
+  border-radius: var(--border-radius);
+  color: var(--color-light);
+}
+
+.input ::placeholder {
+  color: var(--color-light-grey);
+}
+
+.input:hover {
+  border-color: var(--color-light);
+}
+
+.input:focus {
+  color: var(--color-dark);
+  background-color: var(--color-light-grey);
+  outline: none;
 }
 
 .container {
@@ -319,6 +354,7 @@ h5,
 h6 {
   font-weight: 700;
   text-transform: uppercase;
+  color: var(--color-light);
 }
 
 .header {
@@ -501,9 +537,153 @@ h6 {
   margin-bottom: 36px;
 }
 
+.training-types {
+  position: relative;
+  max-width: 1920px;
+  margin-inline: auto;
+  padding-top: 70px;
+  padding-bottom: 120px;
+  background-color: var(--color-dark);
+}
+
+.training-types-list {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 60px;
+}
+
+.training-types-item {
+  --iconSize: 80px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 32px;
+  padding-top: var(--iconSize);
+  background: url(./icons/arrow-pointer.svg) 100% 0 / var(--iconSize) no-repeat;
+}
+
+.training-types-item-title {
+  font-size: 16px;
+}
+
+.join-us-video-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("./images/join-us-bg.jpg") center/cover no-repeat
+    var(--color-dark-alternate);
+  padding: 150px 30px;
+}
+
+.join-us-video {
+  width: 100%;
+  max-width: 960px;
+  height: auto;
+}
+
+.join-us-video-play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 4px;
+  width: 200px;
+  aspect-ratio: 1;
+  background-color: transparent;
+  border: var(--border);
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-light);
+}
+
+.join-us-video-play-button::after {
+  content: '';
+  width: 26px;
+  aspect-ratio: 1;
+  transition-duration: var(--transition-duration);
+  background: url('./icons/button-arrow.svg') center/contain no-repeat;
+}
+
+.join-us-video-play-button:hover {
+  color: var(--color-dark);
+  background-color: var(--color-light-grey);
+}
+
+.join-us-video-play-button:hover::after {
+  filter: invert(1);
+}
+
+.join-us-body {
+  padding-bottom: 150px;
+}
+
+.join-us-title {
+  position: relative;
+  font-size: clamp(64px, 9.37vw, 180px);
+  line-height: 1;
+  text-align: center;
+  margin-top: -0.4em;
+}
+
+.join-us-title::after {
+  content: '';
+  display: inline-block;
+  height: 0.7em;
+  aspect-ratio: 1;
+  margin-left: 0.14em;
+  background: url('./icons/arrow.svg') center/contain no-repeat;
+  scale: 1 -1;
+}
+
+.join-us-title:not(:last-child) {
+  margin-bottom: 130px;
+}
+
+.join-us-form-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 8px;
+}
+
+.join-us-form-header:not(:last-child) {
+  margin-bottom: 50px;
+}
+
+.join-us-form-subtitle {
+  font-size: 20px;
+  line-height: 1.65;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--color-light);
+}
+
+.join-us-form-body {
+  display: flex;
+  justify-content: center;
+  column-gap: 20px;
+}
+
+.join-us-form-input {
+  max-width: 400px;
+}
+
 @media (max-width: 1919px) {
   .motivation-card-image {
     margin-block: -20px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .training-types-list {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -540,6 +720,14 @@ h6 {
     max-width: 30%;
     height: auto;
     margin-block: 0;
+  }
+
+  .join-us-body {
+    padding-bottom: 80px;
+  }
+
+  .join-us-title:not(:last-child) {
+    margin-bottom: 80px;
   }
 }
 
@@ -588,5 +776,38 @@ h6 {
 
   .motivation-card-description:not(:last-child) {
     margin-bottom: 20px;
+  }
+
+  .training-types-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .training-types-item {
+    --iconSize: 40px;
+
+    row-gap: 10px;
+  }
+
+  .training-types-image {
+    max-width: 120px;
+  }
+
+  .join-us-video-play-button {
+    width: 120px;
+  }
+
+  .join-us-title:not(:last-child) {
+    margin-bottom: 40px;
+  }
+
+  .join-us-form-subtitle {
+    font-size: 16px;
+  }
+
+  .join-us-form-body {
+    flex-direction: column;
+    align-items: center;
+    row-gap: 20px;
   }
 }
